@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html> 
+<body>
+	<p>Image to use;</p>
+	<canvas id="myCanvas" width = "640" height = "480">
+		your browser does not support the html5 canvas tag
+	</canvas>
+	<script src="keyboard.js">
+	</script>
+	<script>
+		var canvas = document.getElementById("myCanvas");
+		var context = canvas.getContext("2d");
+context.font ="30px Arial";
+context.fillText("cheers love the cavarly is here",10,50);
+
+		var image = document.createElement("img");
+		image.src = "tracer.gif";
+		var rotation = 1;
+		var CanDraw = flase;
+		function Update ()
+		{
+ 		if(keyboard.isKeyDown(keyboard.KEY_SPACE))
+		{
+		CanDraw = true;
+		}
+		function Draw ()
+		{
+			//clear the screen
+			context.fillStyle = 'rgb(101,156,239)';
+			context.fillRect(0,0,canvas.width,canvas.height);
+			
+			
+			
+		context.save();
+		context.translate(canvas.width/2,canvas.height/2);
+		context.rotate(rotation);
+		context.drawImage(image,-image.width/2,-image.height/2);
+		context.restore();
+		
+		
+		
+		
+		
+		
+		}
+		function GameLoop()
+		{
+			Update();
+			Draw();
+			//Ask the browser to call the gameloop function again.
+			requestAnimationFrame(GameLoop);
+		}
+		GameLoop();
+
+	</script>
+	</canvas>
+
+</body>
+</html>
